@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+    <style name="BottomNavigation">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="itemBackground">@color/colorWhite</item>
+        <item name="itemIconTint">@color/bottom_navigation_color</item>
+        <item name="itemTextColor">@color/bottom_navigation_color</item>
+    </style>
+</resources>

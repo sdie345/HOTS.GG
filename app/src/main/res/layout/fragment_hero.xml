@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".views.fragments.HeroFragment">
+
+    <com.arlib.floatingsearchview.FloatingSearchView
+        android:id="@+id/floating_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:floatingSearch_close_search_on_keyboard_dismiss="true"
+        app:floatingSearch_leftActionMode="showHamburger"
+        app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
+        app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
+        app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
+        app:floatingSearch_searchHint="@string/hero_menu_search"
+        app:floatingSearch_showSearchKey="false"
+        app:floatingSearch_suggestionsListAnimDuration="250"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="92dp">
+    </com.arlib.floatingsearchview.FloatingSearchView>
+    <TableLayout
+        android:id="@+id/hero_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/guideline7"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint=""
+        app:layout_constraintStart_toStartOf="parent"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hero_view_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/hero_tabs"
+        app:layout_constraintTop_toBottomOf="@id/hero_tabs"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="80dp" />
+</android.support.constraint.ConstraintLayout>

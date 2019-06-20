@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HOTS.GG</string>
+    <string name="press_back_button">뒤로가기 버튼을 한번 더 누르시면 종료됩니다.</string>
+    <string name="title">HOTS.GG</string>
+    <string name="hero_menu_search">영웅 검색</string>
+    <string name="main_search_string">플레이어 이름 또는 배틀태그#1234</string>
+    <string name="hero_search_string">영웅  검색</string>
+</resources>
