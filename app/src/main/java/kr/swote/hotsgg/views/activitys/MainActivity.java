@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import kr.swote.hotsgg.R;
@@ -17,7 +16,6 @@ import kr.swote.hotsgg.views.fragments.StaticFragment;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    FrameLayout main_container;
     int backKeyPressedTime = 200;
     Fragment registedFragment[] = new Fragment[3];
     Toast toast;
