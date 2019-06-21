@@ -3,6 +3,8 @@ package kr.swote.hotsgg.functions.datas;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Role {
 
     @SerializedName("name")
@@ -39,4 +41,8 @@ public class Role {
         this.slug = slug;
     }
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("name", name).append("description", description).append("slug", slug).toString();
+    }
 }

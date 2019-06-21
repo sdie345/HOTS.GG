@@ -1,12 +1,10 @@
 package kr.swote.hotsgg.views.activitys;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import kr.swote.hotsgg.R;
@@ -24,19 +22,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         registedFragment[0] = new SearchFragment();
         registedFragment[1] = new HeroFragment();
         registedFragment[2] = new StaticFragment();
         replaceFragment(0);
         toast = Toast.makeText(this, R.string.press_back_button, Toast.LENGTH_SHORT);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
-    BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.nav_search :
                     replaceFragment(0);
@@ -49,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
                     return true;
             }
             return false;
-        }
-    };
+        });
+    }
 
     private void replaceFragment(int idx) {
         FragmentTransaction fragmnTrans = getSupportFragmentManager().beginTransaction();

@@ -1,6 +1,9 @@
 package kr.swote.hotsgg.functions.datas;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Trait {
 
@@ -71,4 +74,8 @@ public class Trait {
         this.icon = icon;
     }
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("name", name).append("description", description).append("displayText", displayText).append("cooldown", cooldown).append("slug", slug).append("icon", icon).toString();
+    }
 }

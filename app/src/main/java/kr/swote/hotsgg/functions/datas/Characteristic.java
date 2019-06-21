@@ -3,6 +3,8 @@ package kr.swote.hotsgg.functions.datas;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Characteristic {
 
     @SerializedName("name")
@@ -37,6 +39,10 @@ public class Characteristic {
 
     public void setTier(String tier) {
         this.tier = tier;
+    }
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("name", name).append("text", text).append("tier", tier).toString();
     }
 
 }

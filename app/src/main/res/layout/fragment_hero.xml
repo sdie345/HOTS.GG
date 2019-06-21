@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     tools:context=".views.fragments.HeroFragment">
 
     <com.arlib.floatingsearchview.FloatingSearchView
@@ -22,15 +21,17 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="92dp">
     </com.arlib.floatingsearchview.FloatingSearchView>
-    <TableLayout
+    <android.support.design.widget.TabLayout
         android:id="@+id/hero_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint=""
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabGravity="fill"/>
     <android.support.v7.widget.RecyclerView
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:id="@+id/hero_view_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

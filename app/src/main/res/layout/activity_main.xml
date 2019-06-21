@@ -16,11 +16,12 @@
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        style="@style/BottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         app:labelVisibilityMode="labeled"
-        app:layout_behavior="tech.thdev.app.view.BottomNavigationBehavior"
+        android:background="@color/colorWhite"
+        app:itemTextColor="@color/bottom_navigation_color"
+        app:itemIconTint="@color/bottom_navigation_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"

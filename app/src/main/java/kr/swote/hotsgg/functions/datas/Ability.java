@@ -3,6 +3,8 @@ package kr.swote.hotsgg.functions.datas;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Ability {
 
     @SerializedName("name")
@@ -81,6 +83,10 @@ public class Ability {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("name", name).append("description", description).append("displayText", displayText).append("vital", vital).append("cooldown", cooldown).append("slug", slug).append("icon", icon).toString();
     }
 
 }

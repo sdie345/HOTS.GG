@@ -3,6 +3,8 @@ package kr.swote.hotsgg.functions.datas;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.List;
 
 public class HeroData {
@@ -227,5 +229,8 @@ public class HeroData {
     public void setCharacteristic(List<Characteristic> characteristic) {
         this.characteristic = characteristic;
     }
-
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("name", name).append("title", title).append("role", role).append("type", type).append("description", description).append("shortDescription", shortDescription).append("difficulty", difficulty).append("circleIcon", circleIcon).append("cardPortrait", cardPortrait).append("franchise", franchise).append("release", release).append("isNew", isNew).append("slug", slug).append("trait", trait).append("href", href).append("abilities", abilities).append("heroicAbilities", heroicAbilities).append("otherAbilities", otherAbilities).append("expandedRole", expandedRole).append("characteristic", characteristic).toString();
+    }
 }

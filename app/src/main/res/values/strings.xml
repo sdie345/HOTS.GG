@@ -5,4 +5,7 @@
     <string name="hero_menu_search">영웅 검색</string>
     <string name="main_search_string">플레이어 이름 또는 배틀태그#1234</string>
     <string name="hero_search_string">영웅  검색</string>
+    <string name="hero_sample_icon">영웅 아이콘</string>
+    <string name="hero_sample_name">sample</string>
+    <string name="hero_sample_win_rate">승률 : 50%</string>
 </resources>
