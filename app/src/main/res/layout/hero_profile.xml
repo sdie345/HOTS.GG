@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_margin="16dp"
-    android:paddingBottom="16dp"
     android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout
@@ -19,8 +18,8 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/lato"
             android:text="노바"
-            android:textColor="@color/gray"
-            android:textSize="28sp"
+            android:textColor="@color/heroSkill"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/guideline13"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +33,7 @@
             android:layout_marginStart="18dp"
             android:fontFamily="@font/lato"
             android:text="자치령 유령"
-            android:textColor="@color/gray"
+            android:textColor="@color/lightGray"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/guideline13"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,44 +68,55 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
                     android:text="역할군"
-                    android:textColor="@color/lightBlack"
+                    android:textColor="@color/heroSkill"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/role"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
                     android:text="암살자"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/lightGray"
                     android:textSize="14sp" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
-                    android:id="@+id/type"
                     android:layout_width="2dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
                     android:text="공격 방식"
-                    android:textColor="@color/lightBlack"
+                    android:textColor="@color/heroSkill"
                     android:textSize="15sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato"
+                    android:text="원거리"
+                    android:textColor="@color/lightGray"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
-                    android:text="원거리"
-                    android:textColor="@color/gray"
-                    android:textSize="14sp" />
-            </TableRow>
-
-            <TableRow android:layout_marginTop="8dp">
+                    android:text="난이도"
+                    android:textColor="@color/heroSkill"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/difficulty"
@@ -114,18 +124,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
-                    android:text="난이도"
-                    android:textColor="@color/lightBlack"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/lato"
                     android:text="중간"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/lightGray"
                     android:textSize="14sp" />
             </TableRow>
 
@@ -136,8 +136,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
-                    android:text="등장 세계관"
-                    android:textColor="@color/lightBlack"
+                    android:text="세계관"
+                    android:textColor="@color/heroSkill"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -148,7 +148,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
                     android:text="StarCraft"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/lightGray"
                     android:textSize="14sp" />
             </TableRow>
         </TableLayout>
@@ -168,17 +168,19 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
                     android:text="영웅 배경 : "
-                    android:textColor="@color/lightBlack"
+                    android:textColor="@color/heroSkill"
                     android:textSize="15sp"
                     android:textStyle="bold" />
                 <TextView
+                    android:id="@+id/description"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
+                    android:layout_marginBottom="8dp"
                     android:text="노벰버 '노바' 테라는 테란 자치령의 유령 요원으로 역사상 가장 강력한 사이오닉 병사 중 한 명입니다. 고도의 집중력과 투지를 겸비한 노바는 매우 위험한 인물로, 짐 레이너마저도 그녀의 눈길을 끄는 것을 꺼려합니다."
-                    android:textColor="@color/gray"
-                    android:textSize="14sp" />
+                    android:textColor="@color/lightGray"
+                    android:textSize="12sp" />
             </TableRow>
             <TableRow
                 android:layout_marginTop="16dp"
@@ -188,19 +190,21 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
                     android:text="영웅 설명 : "
-                    android:textColor="@color/lightBlack"
+                    android:textColor="@color/heroSkill"
                     android:layout_marginRight="8dp"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/short_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
+                    android:layout_marginBottom="8dp"
                     android:text="은신한 상태에서 적을 기습하여 폭발적인 피해를 줄 수 있는 마법사형 암살자입니다."
-                    android:textColor="@color/gray"
-                    android:textSize="14sp" />
+                    android:textColor="@color/lightGray"
+                    android:textSize="12sp" />
             </TableRow>
         </TableLayout>
 
@@ -209,7 +213,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="196dp" />
+            app:layout_constraintGuide_begin="204dp" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline12"

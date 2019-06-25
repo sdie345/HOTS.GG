@@ -3,9 +3,11 @@ package kr.swote.hotsgg.views.fragments;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -131,7 +133,6 @@ public class HeroFragment extends Fragment {
                                         e.printStackTrace();
                                         Log.e("heroRecyclerViewAdapter", e.toString());
                                     }
-
                                 }
                             };
                             mThread.start();
@@ -198,10 +199,14 @@ public class HeroFragment extends Fragment {
                     adapter.notifyDataSetChanged();
                     break;
             }
+            int tabIconColor = ContextCompat.getColor(getContext(), R.color.colorPrimary);
+            tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
         }
 
         @Override
         public void onTabUnselected(TabLayout.Tab tab) {
+            int tabIconColor = ContextCompat.getColor(getContext(), R.color.lightGray);
+            tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
         }
         @Override
         public void onTabReselected(TabLayout.Tab tab) {

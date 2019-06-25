@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".views.activitys.SplashActivity">
+        <activity android:name=".views.activitys.SplashActivity"
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,7 +31,8 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.activitys.HeroResultActivity" />
+        <activity android:name=".views.activitys.HeroResultActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

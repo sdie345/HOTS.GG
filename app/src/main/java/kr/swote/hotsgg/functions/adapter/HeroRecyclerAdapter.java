@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,10 +75,12 @@ public class HeroRecyclerAdapter extends RecyclerView.Adapter<HeroRecyclerAdapte
 
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
+                Log.e("Adapter", position + "data clicked");
                 HeroData item = data.get(position);
                 Gson gson = new Gson();
                 Intent intent = new Intent(context, HeroResultActivity.class);
                 intent.putExtra("heroData", gson.toJson(item));
+                context.startActivity(intent);
             });
         }
     }

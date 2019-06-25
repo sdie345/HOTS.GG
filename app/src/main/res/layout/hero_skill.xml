@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp">
+    android:layout_margin="8dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/lato"
             android:text="영구 은신"
-            android:textColor="@color/gray"
+            android:textColor="@color/heroSkill"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/skill_description"
@@ -59,6 +59,7 @@
             android:text="3초 동안 전투에서 벗어나 있으면 은신 상태가 됩니다. 피해를 받거나, 공격하거나, 기술을 사용하거나, 정신을 집중하면 은신이 풀립니다. 은신 중에 1.5초 이상 움직이지 않으면 투명 상태가 됩니다.  지속 효과: 은신한 동안 이동 속도가 15% 증가합니다."
             android:scrollHorizontally="false"
             android:ellipsize="none"
+            android:fontFamily="@font/lato"
             android:textColor="@color/lightGray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
