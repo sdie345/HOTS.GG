@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:floatingSearch_close_search_on_keyboard_dismiss="true"
-        app:floatingSearch_leftActionMode="showHamburger"
+        app:floatingSearch_leftActionMode="noLeftAction"
         app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
         app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
         app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
@@ -30,17 +30,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:tabGravity="fill"/>
     <android.support.v7.widget.RecyclerView
-        android:paddingTop="16dp"
         android:paddingBottom="16dp"
         android:id="@+id/hero_view_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/hero_tabs"
         app:layout_constraintTop_toBottomOf="@id/hero_tabs"/>
+
     <android.support.constraint.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="80dp" />
+        app:layout_constraintGuide_begin="75dp" />
 </android.support.constraint.ConstraintLayout>

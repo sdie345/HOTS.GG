@@ -1,7 +1,8 @@
 package kr.swote.hotsgg.views.fragments;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,14 +16,21 @@ import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import kr.swote.hotsgg.R;
 import kr.swote.hotsgg.functions.API.API;
 import kr.swote.hotsgg.functions.API.Client;
 import kr.swote.hotsgg.functions.adapter.HeroRecyclerAdapter;
 import kr.swote.hotsgg.functions.datas.HeroData;
-import kr.swote.hotsgg.views.activitys.HeroSearchActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,6 +47,7 @@ public class HeroFragment extends Fragment {
     ArrayList<HeroData> healer = new ArrayList<>();
     ArrayList<HeroData> meelAssassin = new ArrayList<>();
     ArrayList<HeroData> rangeAssassin = new ArrayList<>();
+    Map<String, Bitmap> icons = new HashMap<>();
     FloatingSearchView floatingSearchView;
     SharedPreferences preferences;
     API api;
@@ -55,10 +64,7 @@ public class HeroFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.hero_view_recycler);
         floatingSearchView = rootView.findViewById(R.id.floating_search_view);
         tabLayout = rootView.findViewById(R.id.hero_tabs);
-        //버튼 클릭 이벤트 처리
-        floatingSearchView.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), HeroSearchActivity.class);
-            //startActivity(intent);
+        floatingSearchView.setOnQueryChangeListener((oldQuery, newQuery) -> {
         });
         //TabLayout tab 추가
         //전사
@@ -106,12 +112,36 @@ public class HeroFragment extends Fragment {
                                     rangeAssassin.add(it);
                                     break;
                             }
+                            Thread mThread = new Thread() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        //url 데이터 가져와서 연걸하기
+                                        URL url = new URL(it.getCircleIcon());
+                                        HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+                                        con.setDoInput(true);
+                                        //이미지 비트맵 받음
+                                        InputStream is = con.getInputStream();
+                                        Bitmap bitmap = BitmapFactory.decodeStream(is);
+                                        icons.put(it.getName(), bitmap);
+                                    } catch (MalformedURLException e) {
+                                        e.printStackTrace();
+                                        Log.e("heroRecyclerViewAdapter", e.toString());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                        Log.e("heroRecyclerViewAdapter", e.toString());
+                                    }
+
+                                }
+                            };
+                            mThread.start();
                         });
                         //리사이클러뷰 데이터 설정
                         recyclerData.addAll(tank);
                         adapter.notifyDataSetChanged();
                     }
                     else {
+                        // code 200이 아니면
                         Toast.makeText(getActivity(), "영웅 정보를 불러오는데 실패했습니다!", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -126,12 +156,13 @@ public class HeroFragment extends Fragment {
         tabLayout.addOnTabSelectedListener(mTabSelectedListener);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        adapter = new HeroRecyclerAdapter(recyclerData);
+        adapter = new HeroRecyclerAdapter(recyclerData, icons, getContext());
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
         return rootView;
     }
-
+    // 탭 레이아웃 클릭 리스너
     TabLayout.OnTabSelectedListener mTabSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {

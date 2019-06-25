@@ -15,7 +15,7 @@ public class Client {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://ani.sunrin.life:3000/")
+                .baseUrl("http://andy0414.sunrin.life:3010/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
