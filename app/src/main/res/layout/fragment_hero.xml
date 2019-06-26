@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".views.fragments.HeroFragment">
 
-    <com.arlib.floatingsearchview.FloatingSearchView
-        android:id="@+id/floating_search_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:floatingSearch_close_search_on_keyboard_dismiss="true"
-        app:floatingSearch_leftActionMode="showHamburger"
-        app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
-        app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
-        app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
-        app:floatingSearch_searchHint="@string/hero_menu_search"
-        app:floatingSearch_showSearchKey="false"
-        app:floatingSearch_suggestionsListAnimDuration="250"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="92dp"></com.arlib.floatingsearchview.FloatingSearchView>
-
     <android.support.design.widget.TabLayout
         android:id="@+id/hero_tabs"
         android:layout_width="match_parent"
@@ -47,4 +32,18 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="70dp" />
 
+    <com.arlib.floatingsearchview.FloatingSearchView
+        android:id="@+id/floating_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:floatingSearch_close_search_on_keyboard_dismiss="true"
+        app:floatingSearch_leftActionMode="showHamburger"
+        app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
+        app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
+        app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
+        app:floatingSearch_searchHint="@string/hero_menu_search"
+        app:floatingSearch_showSearchKey="false"
+        app:floatingSearch_suggestionsListAnimDuration="250"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="92dp"/>
 </android.support.constraint.ConstraintLayout>

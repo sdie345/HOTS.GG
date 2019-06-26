@@ -45,6 +45,12 @@ public class HeroData {
     @SerializedName("isNew")
     @Expose
     private Boolean isNew;
+    @SerializedName("winRate")
+    @Expose
+    private float winRate;
+    @SerializedName("pickRate")
+    @Expose
+    private float pickRate;
     @SerializedName("slug")
     @Expose
     private String slug;
@@ -166,6 +172,14 @@ public class HeroData {
         this.isNew = isNew;
     }
 
+    public float getWinRate() { return winRate; }
+
+    public void setWinRate(float winRate) { this.winRate = winRate; }
+
+    public float getPickRate() { return pickRate; }
+
+    public void setPickRate(float pickRate) { this.pickRate = pickRate; }
+
     public String getSlug() {
         return slug;
     }
@@ -231,6 +245,6 @@ public class HeroData {
     }
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("name", name).append("title", title).append("role", role).append("type", type).append("description", description).append("shortDescription", shortDescription).append("difficulty", difficulty).append("circleIcon", circleIcon).append("cardPortrait", cardPortrait).append("franchise", franchise).append("release", release).append("isNew", isNew).append("slug", slug).append("trait", trait).append("href", href).append("abilities", abilities).append("heroicAbilities", heroicAbilities).append("otherAbilities", otherAbilities).append("expandedRole", expandedRole).append("characteristic", characteristic).toString();
+        return new ToStringBuilder(this).append("name", name).append("title", title).append("role", role).append("type", type).append("description", description).append("shortDescription", shortDescription).append("difficulty", difficulty).append("nova_circle_icon", circleIcon).append("cardPortrait", cardPortrait).append("franchise", franchise).append("release", release).append("isNew", isNew).append("slug", slug).append("trait", trait).append("href", href).append("abilities", abilities).append("heroicAbilities", heroicAbilities).append("otherAbilities", otherAbilities).append("expandedRole", expandedRole).append("characteristic", characteristic).toString();
     }
 }

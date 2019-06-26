@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,8 +49,9 @@ public class HeroRecyclerAdapter extends RecyclerView.Adapter<HeroRecyclerAdapte
         holder.name.setText(nowData.getName());
 
         //승률
-        //holder.winRate.setText("승률 : " + data.get(position).winRate + "%");
-        //holder.progressBar.setProgress(data.get(position).winRate);
+        float winRate = data.get(position).getWinRate();
+        holder.winRate.setText(String.format("승률 : %.2f%%", winRate));
+        holder.progressBar.setProgress((int)winRate * 100);
     }
 
     @Override
@@ -75,7 +75,6 @@ public class HeroRecyclerAdapter extends RecyclerView.Adapter<HeroRecyclerAdapte
 
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
-                Log.e("Adapter", position + "data clicked");
                 HeroData item = data.get(position);
                 Gson gson = new Gson();
                 Intent intent = new Intent(context, HeroResultActivity.class);

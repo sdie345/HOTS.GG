@@ -1,5 +1,6 @@
 package kr.swote.hotsgg.views.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,9 +15,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
+import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +36,10 @@ import kr.swote.hotsgg.R;
 import kr.swote.hotsgg.functions.API.API;
 import kr.swote.hotsgg.functions.API.Client;
 import kr.swote.hotsgg.functions.adapter.HeroRecyclerAdapter;
+import kr.swote.hotsgg.functions.datas.DataHelper;
 import kr.swote.hotsgg.functions.datas.HeroData;
+import kr.swote.hotsgg.functions.datas.HeroSuggestion;
+import kr.swote.hotsgg.views.activitys.HeroResultActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,8 +57,12 @@ public class HeroFragment extends Fragment {
     ArrayList<HeroData> meelAssassin = new ArrayList<>();
     ArrayList<HeroData> rangeAssassin = new ArrayList<>();
     Map<String, Bitmap> icons = new HashMap<>();
-    FloatingSearchView floatingSearchView;
+    Map<String, HeroData> search = new HashMap<>();
+    ArrayList<HeroSuggestion> names = new ArrayList<>();
+    FloatingSearchView mSearchView;
     SharedPreferences preferences;
+
+    private String mLastQuery = "";
     API api;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,10 +75,9 @@ public class HeroFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_hero, container, false);
         recyclerView = rootView.findViewById(R.id.hero_view_recycler);
-        floatingSearchView = rootView.findViewById(R.id.floating_search_view);
+        mSearchView = rootView.findViewById(R.id.floating_search_view);
         tabLayout = rootView.findViewById(R.id.hero_tabs);
-        floatingSearchView.setOnQueryChangeListener((oldQuery, newQuery) -> {
-        });
+
         //TabLayout tab 추가
         //전사
         tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getDrawable(R.drawable.ic_tank)));
@@ -93,6 +103,7 @@ public class HeroFragment extends Fragment {
                         datas.addAll(response.body());
                         Log.e("getHeroData datas ", datas.toString());
                         //데이터들 분류
+                        Integer k = 0;
                         datas.forEach(it -> {
                             switch (it.getExpandedRole().getName()) {
                                 case "전사":
@@ -119,6 +130,7 @@ public class HeroFragment extends Fragment {
                                 public void run() {
                                     try {
                                         //url 데이터 가져와서 연걸하기
+                                        Log.e("circle_icon",it.getCircleIcon());
                                         URL url = new URL(it.getCircleIcon());
                                         HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
                                         con.setDoInput(true);
@@ -136,10 +148,14 @@ public class HeroFragment extends Fragment {
                                 }
                             };
                             mThread.start();
+                            search.put(it.getName(), it);
+                            names.add(new HeroSuggestion(it.getName()));
                         });
                         //리사이클러뷰 데이터 설정
                         recyclerData.addAll(tank);
                         adapter.notifyDataSetChanged();
+                        DataHelper.setHeroSuggestions(names);
+                        setupSearchBar();
                     }
                     else {
                         // code 200이 아니면
@@ -212,4 +228,54 @@ public class HeroFragment extends Fragment {
         public void onTabReselected(TabLayout.Tab tab) {
         }
     };
+
+    private void setupSearchBar() {
+        mSearchView.setOnQueryChangeListener((oldQuery, newQuery) -> {
+            if (!oldQuery.equals("") && newQuery.equals("")) {
+                mSearchView.clearSuggestions();
+            } else {
+                mSearchView.showProgress();
+                DataHelper.findSuggestions(getActivity(), newQuery, 5,
+                        250, results -> {
+                            mSearchView.swapSuggestions(results);
+
+                            mSearchView.hideProgress();
+                        });
+            }
+        });
+        mSearchView.setOnSearchListener(new FloatingSearchView.OnSearchListener() {
+            @Override
+            public void onSuggestionClicked(final SearchSuggestion searchSuggestion) {
+
+                HeroSuggestion heroSuggestion = (HeroSuggestion) searchSuggestion;
+                HeroData item = search.get(heroSuggestion.getBody());
+                Intent intent = new Intent(getContext(), HeroResultActivity.class);
+                intent.putExtra("heroData", new Gson().toJson(item));
+                mLastQuery = searchSuggestion.getBody();
+                //searchView focus 해제
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(getContext().INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(mSearchView.getWindowToken(), 0);
+
+                startActivity(intent);
+            }
+
+            @Override
+            public void onSearchAction(String query) {
+                mLastQuery = query;
+            }
+        });
+        mSearchView.setOnFocusChangeListener(new FloatingSearchView.OnFocusChangeListener() {
+            @Override
+            public void onFocus() {
+
+                mSearchView.swapSuggestions(DataHelper.getHistory(getActivity(), 3));
+            }
+
+            @Override
+            public void onFocusCleared() {
+
+                mSearchView.setSearchBarTitle(mLastQuery);
+            }
+        });
+    }
 }

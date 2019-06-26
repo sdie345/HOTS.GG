@@ -10,36 +10,6 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/lato"
-            android:text="노바"
-            android:textColor="@color/heroSkill"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/guideline13"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:fontFamily="@font/lato"
-            android:text="자치령 유령"
-            android:textColor="@color/lightGray"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/guideline13"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guideline12" />
-
         <ImageView
             android:id="@+id/portrait"
             android:layout_width="180dp"
@@ -48,7 +18,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline14"
             app:layout_constraintEnd_toStartOf="@+id/guideline11"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline12" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TableLayout
             android:layout_width="160dp"
@@ -58,7 +28,8 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline14"
             app:layout_constraintStart_toStartOf="@id/guideline11"
-            app:layout_constraintTop_toTopOf="@id/guideline12">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
             <TableRow>
 
@@ -215,25 +186,12 @@
             android:orientation="vertical"
             app:layout_constraintGuide_begin="204dp" />
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="75dp" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="45dp" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="210dp" />
+            app:layout_constraintGuide_begin="135dp" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
