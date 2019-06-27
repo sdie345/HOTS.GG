@@ -9,4 +9,5 @@
     <string name="hero_sample_name">sample</string>
     <string name="hero_sample_win_rate">승률 : 50%</string>
     <string name="splash_sub_title">Heroes of the Storm 의 새로운 전적 검색</string>
+    <string name="string_pick_rate">픽률 : 50%</string>
 </resources>

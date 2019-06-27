@@ -245,6 +245,6 @@ public class HeroData {
     }
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("name", name).append("title", title).append("role", role).append("type", type).append("description", description).append("shortDescription", shortDescription).append("difficulty", difficulty).append("nova_circle_icon", circleIcon).append("cardPortrait", cardPortrait).append("franchise", franchise).append("release", release).append("isNew", isNew).append("slug", slug).append("trait", trait).append("href", href).append("abilities", abilities).append("heroicAbilities", heroicAbilities).append("otherAbilities", otherAbilities).append("expandedRole", expandedRole).append("characteristic", characteristic).toString();
+        return new ToStringBuilder(this).append("name", name).append("title", title).append("role", role).append("type", type).append("description", description).append("shortDescription", shortDescription).append("difficulty", difficulty).append("nova_circle_icon", circleIcon).append("winRate", winRate).append("pickRate").append("cardPortrait", cardPortrait).append("franchise", franchise).append("release", release).append("isNew", isNew).append("slug", slug).append("trait", trait).append("href", href).append("abilities", abilities).append("heroicAbilities", heroicAbilities).append("otherAbilities", otherAbilities).append("expandedRole", expandedRole).append("characteristic", characteristic).toString();
     }
 }

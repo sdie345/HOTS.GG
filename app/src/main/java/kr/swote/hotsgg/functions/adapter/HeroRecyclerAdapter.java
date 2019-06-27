@@ -35,7 +35,7 @@ public class HeroRecyclerAdapter extends RecyclerView.Adapter<HeroRecyclerAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hero_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
 
         return new ViewHolder(view);
     }
@@ -51,7 +51,11 @@ public class HeroRecyclerAdapter extends RecyclerView.Adapter<HeroRecyclerAdapte
         //승률
         float winRate = data.get(position).getWinRate();
         holder.winRate.setText(String.format("승률 : %.2f%%", winRate));
-        holder.progressBar.setProgress((int)winRate * 100);
+        holder.winProgress.setProgress((int)winRate * 100);
+        //픽률
+        float pickRate = data.get(position).getPickRate();
+        holder.pickRate.setText(String.format("픽률 : %.2f%%", pickRate));
+        holder.pickProgress.setProgress((int)pickRate * 100);
     }
 
     @Override
@@ -63,16 +67,19 @@ public class HeroRecyclerAdapter extends RecyclerView.Adapter<HeroRecyclerAdapte
         ImageView img;
         TextView name;
         TextView winRate;
-        ProgressBar progressBar;
+        ProgressBar winProgress;
+        TextView pickRate;
+        ProgressBar pickProgress;
 
         public ViewHolder(View itemView)  {
             super(itemView);
 
-            img = itemView.findViewById(R.id.hero_img);
-            name = itemView.findViewById(R.id.hero_name);
-            winRate = itemView.findViewById(R.id.hero_win_rate);
-            progressBar = itemView.findViewById(R.id.hero_progress);
-
+            img = itemView.findViewById(R.id.img);
+            name = itemView.findViewById(R.id.name);
+            winRate = itemView.findViewById(R.id.win_rate);
+            winProgress = itemView.findViewById(R.id.win_progress);
+            pickRate = itemView.findViewById(R.id.pick_rate);
+            pickProgress = itemView.findViewById(R.id.pick_progress);
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
                 HeroData item = data.get(position);

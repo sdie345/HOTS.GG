@@ -1,7 +1,6 @@
 package kr.swote.hotsgg.views.fragments;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
@@ -60,7 +59,6 @@ public class HeroFragment extends Fragment {
     Map<String, HeroData> search = new HashMap<>();
     ArrayList<HeroSuggestion> names = new ArrayList<>();
     FloatingSearchView mSearchView;
-    SharedPreferences preferences;
 
     private String mLastQuery = "";
     API api;
